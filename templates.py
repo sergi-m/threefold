@@ -37,19 +37,40 @@ style ball
 # display ribbons if not already displayed (OPTIONS: show, hide)
 show ribbons
 
+# color protein (OPTIONS: https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/colornames.html)
+color bisque
+
+# display atoms if not already displayed (OPTIONS: show, hide)
+show surfaces; surface color bisque; transparency 90 surfaces
+
 
 
 # Variant Customization
 # =====================================================
 
-# color variant residues from the protein (OPTIONS: https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/colornames.html)
-color {variants} red
+# color silent variants from the protein (OPTIONS: https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/colornames.html)
+select :{silent}; color sel green; label sel height 1.5 size 68; ~select
 
+# color missense variants from the protein (OPTIONS: https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/colornames.html)
+select :{missense}; color sel orange; label sel height 1.5 size 68; ~select
+
+# color nonsense variants from the protein (OPTIONS: https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/colornames.html)
+select :{nonsense}; color sel red; label sel height 1.5 size 68; ~select
+
+# color deletion variants from the protein (OPTIONS: https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/colornames.html)
+select :{deletion}; color sel midnight blue; label sel height 1.5 size 68; ~select
+
+# color frameshift variants from the protein (OPTIONS: https://www.rbvi.ucsf.edu/chimerax/docs/user/commands/colornames.html)
+select :{frameshift}; color sel dark violet; label sel height 1.5 size 68; ~select
 
 """
 
 tpl_test = """\
 id: {id}
 pdb_file: {pdb_file}
-variants: {variants}
+silent: {silent}
+missense: {missense}
+nonsense: {nonsense}
+deletion: {deletion}
+frameshift: {frameshift}
 """

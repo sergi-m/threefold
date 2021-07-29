@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import argparse
 
@@ -16,7 +16,6 @@ def parse_args() -> argparse.Namespace:
     
     parser.add_argument('-p', '--pdb_file',
                         required=True,
-                        nargs='+',
                         help="""Path to the PDB file downloaded from the AlphaFold DB.""",
                         action='store',
                         type=str,
@@ -25,30 +24,27 @@ def parse_args() -> argparse.Namespace:
     
     parser.add_argument('-f', '--var_file',
                         required=True,
-                        nargs='+',
                         help="""Path to the variant file.""",
                         action='store',
                         type=str,
                         metavar='<string>',
                         dest='var_file')
     
-    parser.add_argument('-i', '--id',
+    parser.add_argument('-id',
                         required=True,
-                        nargs='+',
                         help="""ID by which the protein is identified in the variant file.""",
                         action='store',
                         type=str,
                         metavar='<string>',
                         dest='id')
     
-    parser.add_argument('-h', '--hgvs',
+    parser.add_argument('-var',
                         required=True,
-                        nargs='+',
-                        help="""Name of column containing variants at protein level in HVGS format.""",
+                        help="""Name of column containing variants at protein level in HGVS format.""",
                         action='store',
                         type=str,
                         metavar='<string>',
-                        dest='hgvs')
+                        dest='var')
     
     parser.add_argument('-o', '--output',
                         required=False,
@@ -64,8 +60,4 @@ def parse_args() -> argparse.Namespace:
                         action='store_true',
                         dest='overwrite')
     
-    
-    
-    
-
     return parser.parse_args()
